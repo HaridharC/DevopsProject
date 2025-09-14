@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head><title>Place Order - Spice India</title></head>
+<body>
+<h1>Place Your Order</h1>
+<form id="orderForm">
+<label>Your Name:</label><input type="text" id="username" value="user1" required><br><br>
+<label>Select Items:</label><br>
+<input type="checkbox" name="item" value="Paneer Tikka"> Paneer Tikka<br>
+<input type="checkbox" name="item" value="Butter Chicken"> Butter Chicken<br>
+<input type="checkbox" name="item" value="Veg Biryani"> Veg Biryani<br>
+<input type="checkbox" name="item" value="Masala Dosa"> Masala Dosa<br><br>
+<label>Quantity:</label><input type="number" id="qty" value="1" min="1"><br><br>
+<button type="submit">Place Order</button>
+</form>
+<p><a href="menu.html">Back to Menu</a></p>
+<script src="js/order.js"></script>
+<script>
+document.getElementById("orderForm").addEventListener("submit", function(e){
+e.preventDefault();
+const username=document.getElementById("username").value;
+const qty=parseInt(document.getElementById("qty").value);
+let items=[];
+document.querySelectorAll('input[name="item"]:checked').forEach(i=>{items.push(i.value);});
+placeOrder(username,items,qty);
+alert("Order placed!");
+window.location.href="order-details.html";
+});
+</script>
+</body>
+</html>

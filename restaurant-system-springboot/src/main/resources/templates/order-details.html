@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><title>Order Details - Spice India</title></head>
+<body>
+<h1>Order Details</h1>
+<p>Your order has been placed successfully!</p>
+<table border="1" id="orderTable">
+<tr><th>Item</th><th>Quantity</th></tr>
+</table>
+<p><a href="welcome.html">Back to Home</a></p>
+<script src="js/order.js"></script>
+<script>
+let orders = JSON.parse(localStorage.getItem("orders") || "[]");
+let table = document.getElementById("orderTable");
+orders.forEach(o => {
+    if(o.username == "user1" && o.status === "pending"){
+        o.items.forEach(item => {
+            let row = table.insertRow();
+            row.insertCell(0).innerText = item;
+            row.insertCell(1).innerText = o.qty;
+        });
+    }
+});
+</script>
+</body>
+</html>
