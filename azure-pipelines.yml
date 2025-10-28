@@ -6,7 +6,7 @@
 trigger:
 - main
 
-pool: test
+pool: haridhar
 
 steps:
 - script: |
